@@ -1,0 +1,11 @@
+﻿<FluentNavMenu @bind-Expanded="@Expanded" Width="250" Collapsible="true" CollapsedChildNavigation="@EnableCollapsedChildNavigation">
+    <FluentNavLink Href="/" Icon="@(new Icons.Regular.Size20.Home())">Home</FluentNavLink>
+    <FluentNavLink Href="/JsonFormatter" Icon="@(new Icons.Regular.Size20.Braces())">Json Formatter</FluentNavLink>
+</FluentNavMenu>
+
+
+@code
+{
+    bool Expanded = true;
+    bool EnableCollapsedChildNavigation = true;
+}

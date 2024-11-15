@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+
+<FluentLayout>
+    <FluentDesignTheme Mode="DesignThemeModes.Dark" />
+    <FluentHeader>
+        Developer Tools
+    </FluentHeader>
+
+    <FluentBodyContent>
+        <FluentStack Orientation="Orientation.Horizontal" Style="height: 100%;">
+ <NavMenu></NavMenu>
+ <article class="content px-4">
+  @Body
+ </article>
+
+        </FluentStack>
+    </FluentBodyContent>
+</FluentLayout>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

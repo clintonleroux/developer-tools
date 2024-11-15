@@ -1,0 +1,17 @@
+﻿@page "/JsonFormatter"
+@inject Tools.JsonFormatter.JsonFormatter JsonFormatterService
+
+<PageTitle>Json Formatter</PageTitle>
+<FluentTextArea Id="JsonInput" Name="JsonInput" Rows="10" Cols="50" @oninput="eventArgs => FormatJson(eventArgs.Value?.ToString() ?? string.Empty)"></FluentTextArea>
+
+<FluentTextArea Id="JsonOutput" Name="JsonOutput" @bind-Value="formattedJson" Rows="10" Cols="50"></FluentTextArea>
+
+
+@code {
+    private string? formattedJson = null;
+
+    private void FormatJson(string json)
+    {
+        formattedJson = JsonFormatterService.FormatJson(json);
+    }
+}
