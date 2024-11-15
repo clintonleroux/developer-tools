@@ -28,11 +28,6 @@ jobs:
     - name: Build
       run: dotnet build DeveloperTools --no-restore
 
-  test:
-  
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Test
       run:  dotnet test DeveloperTools/DeveloperTools.Test/DeveloperTools.Test.csproj --no-build --verbosity normal
 
