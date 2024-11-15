@@ -12,15 +12,15 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["/DeveloperTools.csproj", "DeveloperTools/"]
+COPY ["/DeveloperTools/DeveloperTools/DeveloperTools.csproj", "DeveloperTools/"]
 RUN dotnet restore "./DeveloperTools/DeveloperTools.csproj"
 COPY . .
-RUN dotnet build -c $BUILD_CONFIGURATION -o /app/build /p:UseAppHost=false
+RUN dotnet build "DeveloperTools/DeveloperTools/DeveloperTools.csproj" -c $BUILD_CONFIGURATION -o /app/build /p:UseAppHost=false
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./DeveloperTools.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "DeveloperTools/DeveloperTools/DeveloperTools.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
